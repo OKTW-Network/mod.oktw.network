@@ -1,10 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import "./assets/main.css";
+import Homepage from "./components/Homepage/Homepage.js";
+import ModPackInfo from "./components/ModPack/Info/Info.js";
+import ModPackVersions from "./components/ModPack/Versions/Versions.js";
+
+ReactDOM.render(
+  <Router>
+    <div>
+      <Route exact path="/" component={Homepage} />
+      <Route path="/info/:modpackID" component={ModPackInfo} />
+      <Route path="/versions/:modpackID" component={ModPackVersions} />
+    </div>
+  </Router>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
